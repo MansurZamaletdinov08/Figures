@@ -1,48 +1,64 @@
 #include <iostream>
 
-class Figure
-{
+class Figure {
 protected:
 	int a, b, c, d;
 	int A, B, C, D;
+
 public:
-	virtual int return_info() {
-		return a, b, c;
+	virtual void return_info() {
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C;
 	}
 };
 
-
-class Traingle : public Figure
-{
+class Traingle : Figure {
 protected:
 	int a = 10, b = 20, c = 30;
 	int A = 50, B = 60, C = 70;
+
 public:
-
-	Traingle() {
-
-	}
-	int return_info() override {
-		return b;
+	void return_info() override {
+		std::cout << "Треугольник:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << "\n" << std::endl;
 	}
 };
- 
-void print_info(Figure* figure) {
-	figure->return_info();
-}
 
+class Rectangular_Traingle : Traingle {
+protected:
+	int a = 10, b = 20, c = 30;
+	int A = 50, B = 60, C = 90;
 
+public:
+	void return_info() override {
+		std::cout << "Прямоугольный Треугольник:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << "\n" << std::endl;
+	}
+};
 
-int main(int argc, char** argv) {
-	setlocale(LC_ALL, "Ru");
+class Isosceles_Traingle : Traingle {
+protected:
+	int a = 10, b = 20, c = 10;
+	int A = 50, B = 60, C = 50;
+
+public:
+	void return_info() override {
+		std::cout << "Равнобедренный Треугольник:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << "\n" << std::endl;
+	}
+};
+
+int main() {
+	setlocale(LC_ALL, "ru");
 	Figure figure;
-	figure.return_info();
-
 	Traingle traingle;
+	Rectangular_Traingle RecTraingle;
+	Isosceles_Traingle IsosTraingle;
+	//figure.return_info(10, 20);
 	traingle.return_info();
-
-	Figure* par_child = &traingle;
-	par_child->return_info();
-
-	print_info(par_child);
+	RecTraingle.return_info();
+	IsosTraingle.return_info();
 }
