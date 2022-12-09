@@ -51,14 +51,111 @@ public:
 	}
 };
 
+class Equilateral_Traingle : Traingle {
+protected:
+	int a = 30, b = 30, c = 30;
+	int A = 60, B = 60, C = 60;
+
+public:
+	void return_info() override {
+		std::cout << "Равносторонний треугольник:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << "\n" << std::endl;
+	}
+};
+
+class Rectangle {
+protected:
+	int a = 10, b = 20, c = 10, d = 20;
+	int A = 90, B = 90, C = 90, D = 90;
+public:
+	virtual void return_info() {
+		std::cout << "Прямоугольник:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n" << std::endl;
+	}
+};
+
+class Quadrilateral : Rectangle {
+protected:
+	int a = 10, b = 20, c = 30, d = 40;
+	int A = 50, B = 60, C = 70, D = 80;
+
+public:
+	virtual void return_info() {
+		std::cout << "Четырёхугольник:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n" << std::endl;
+	}
+};
+
+
+class Square : Rectangle {
+protected:
+	int a = 20, b = 20, c = 20, d = 20;
+	int A = 90, B = 90, C = 90, D = 90;
+
+public:
+	void return_info() override {
+		std::cout << "Квадрат:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n" << std::endl;
+	}
+};
+
+class Parallelogram : Quadrilateral {
+protected:
+	int a = 20, b = 30, c = 20, d = 30;
+	int A = 30, B = 40, C = 30, D = 40;
+
+public:
+	void return_info() override {
+		std::cout << "Параллелограмм:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n" << std::endl;
+	}
+};
+
+class Rhomb : Parallelogram {
+protected:
+	int a = 30, b = 30, c = 30, d = 30;
+	int A = 30, B = 40, C = 30, D = 40;
+
+public:
+	void return_info() override {
+		std::cout << "Ромб:" << std::endl;
+		std::cout << "Стороны: " << "a=" << a << " b=" << b << " c=" << c << " d=" << d << std::endl;
+		std::cout << "Углы: " << "A=" << A << " B=" << B << " C=" << C << " D=" << D << "\n" << std::endl;
+	}
+};
+
+
+void print_info(Figure* figure) {
+	figure->return_info();
+}
+
+
 int main() {
 	setlocale(LC_ALL, "ru");
 	Figure figure;
 	Traingle traingle;
 	Rectangular_Traingle RecTraingle;
 	Isosceles_Traingle IsosTraingle;
-	//figure.return_info(10, 20);
+	Equilateral_Traingle EquiTraingle;
+	Rectangle Rec;
+	Quadrilateral Quad;
+	Square square;
+	Parallelogram parallel;
+	Rhomb rhomb;
+
+
 	traingle.return_info();
 	RecTraingle.return_info();
 	IsosTraingle.return_info();
+	EquiTraingle.return_info();
+	Quad.return_info();
+	Rec.return_info();
+	square.return_info();
+	parallel.return_info();
+	rhomb.return_info();
 }
