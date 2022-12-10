@@ -12,7 +12,7 @@ public:
 	}
 };
 
-class Traingle : Figure {
+class Traingle : public Figure {
 protected:
 	int a = 10, b = 20, c = 30;
 	int A = 50, B = 60, C = 70;
@@ -25,7 +25,7 @@ public:
 	}
 };
 
-class Rectangular_Traingle : Traingle {
+class Rectangular_Traingle : public Traingle {
 protected:
 	int a = 10, b = 20, c = 30;
 	int A = 50, B = 60, C = 90;
@@ -38,7 +38,7 @@ public:
 	}
 };
 
-class Isosceles_Traingle : Traingle {
+class Isosceles_Traingle : public Traingle {
 protected:
 	int a = 10, b = 20, c = 10;
 	int A = 50, B = 60, C = 50;
@@ -51,7 +51,7 @@ public:
 	}
 };
 
-class Equilateral_Traingle : Traingle {
+class Equilateral_Traingle : public Traingle {
 protected:
 	int a = 30, b = 30, c = 30;
 	int A = 60, B = 60, C = 60;
@@ -64,7 +64,7 @@ public:
 	}
 };
 
-class Rectangle {
+class Rectangle : public Figure {
 protected:
 	int a = 10, b = 20, c = 10, d = 20;
 	int A = 90, B = 90, C = 90, D = 90;
@@ -76,7 +76,7 @@ public:
 	}
 };
 
-class Quadrilateral : Rectangle {
+class Quadrilateral : public Rectangle {
 protected:
 	int a = 10, b = 20, c = 30, d = 40;
 	int A = 50, B = 60, C = 70, D = 80;
@@ -90,7 +90,7 @@ public:
 };
 
 
-class Square : Rectangle {
+class Square : public Rectangle {
 protected:
 	int a = 20, b = 20, c = 20, d = 20;
 	int A = 90, B = 90, C = 90, D = 90;
@@ -103,7 +103,7 @@ public:
 	}
 };
 
-class Parallelogram : Quadrilateral {
+class Parallelogram : public Quadrilateral {
 protected:
 	int a = 20, b = 30, c = 20, d = 30;
 	int A = 30, B = 40, C = 30, D = 40;
@@ -116,7 +116,7 @@ public:
 	}
 };
 
-class Rhomb : Parallelogram {
+class Rhomb : public Parallelogram {
 protected:
 	int a = 30, b = 30, c = 30, d = 30;
 	int A = 30, B = 40, C = 30, D = 40;
@@ -135,6 +135,7 @@ void print_info(Figure* figure) {
 }
 
 
+
 int main() {
 	setlocale(LC_ALL, "ru");
 	Figure figure;
@@ -149,13 +150,13 @@ int main() {
 	Rhomb rhomb;
 
 
-	traingle.return_info();
-	RecTraingle.return_info();
-	IsosTraingle.return_info();
-	EquiTraingle.return_info();
-	Quad.return_info();
-	Rec.return_info();
-	square.return_info();
-	parallel.return_info();
-	rhomb.return_info();
+	print_info(&traingle);
+	print_info(&RecTraingle);
+	print_info(&IsosTraingle);
+	print_info(&EquiTraingle);
+	print_info(&Quad);
+	print_info(&Rec);
+	print_info(&square);
+	print_info(&parallel);
+	print_info(&rhomb);
 }
